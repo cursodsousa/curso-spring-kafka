@@ -9,7 +9,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 @SpringBootApplication
 public class PedidosApplication {
 
-	@Bean
+//	@Bean
 	public CommandLineRunner commandLineRunner(KafkaTemplate<String, String> template){
 		return args -> template.send("icompras.pedidos-pagos", "dados", "outra mensagem");
 	}
