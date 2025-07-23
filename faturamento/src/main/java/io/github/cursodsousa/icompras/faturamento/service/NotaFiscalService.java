@@ -14,10 +14,10 @@ import java.util.Map;
 @Service
 public class NotaFiscalService {
 
-    @Value("${classpath:reports/nota-fiscal.jrxml}")
+    @Value("classpath:reports/nota-fiscal.jrxml")
     private Resource notaFiscal;
 
-    @Value("${classpath:reports/logo.png}")
+    @Value("classpath:reports/logo.png")
     private Resource logo;
 
     public byte[] gerarNota(Pedido pedido){
@@ -34,6 +34,8 @@ public class NotaFiscalService {
             params.put("TELEFONE", pedido.cliente().telefone());
             params.put("DATA_PEDIDO", pedido.data());
             params.put("TOTAL_PEDIDO", pedido.total());
+
+            params.put("LOGO", logo.getFile().getAbsolutePath());
 
             var dataSource = new JRBeanCollectionDataSource(pedido.itens());
 

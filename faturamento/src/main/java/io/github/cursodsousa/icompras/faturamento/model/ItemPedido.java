@@ -1,8 +1,18 @@
 package io.github.cursodsousa.icompras.faturamento.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.math.BigDecimal;
 
-public record ItemPedido(Long codigo, String descricao,
-                         BigDecimal valorUnitario, Integer quantidade, BigDecimal total) {
+@Data
+@AllArgsConstructor
+public class ItemPedido {
+
+    private Long codigo;
+    private String nome;
+    private BigDecimal valorUnitario;
+    private Integer quantidade;
+    private BigDecimal total;
 
 }
