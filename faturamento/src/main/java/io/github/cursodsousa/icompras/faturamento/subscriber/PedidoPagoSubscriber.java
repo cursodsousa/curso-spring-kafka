@@ -1,7 +1,7 @@
 package io.github.cursodsousa.icompras.faturamento.subscriber;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.cursodsousa.icompras.faturamento.GeradorNotaFiscalService;
+import io.github.cursodsousa.icompras.faturamento.service.GeradorNotaFiscalService;
 import io.github.cursodsousa.icompras.faturamento.mapper.PedidoMapper;
 import io.github.cursodsousa.icompras.faturamento.model.Pedido;
 import io.github.cursodsousa.icompras.faturamento.subscriber.representation.DetalhePedidoRepresentation;
