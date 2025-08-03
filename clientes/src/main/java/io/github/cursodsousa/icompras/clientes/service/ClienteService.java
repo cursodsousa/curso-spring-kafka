@@ -20,4 +20,9 @@ public class ClienteService {
     public Optional<Cliente> obterPorCodigo(Long codigo){
         return repository.findById(codigo);
     }
+
+    public void deletar(Cliente cliente) {
+        cliente.setAtivo(false);
+        repository.save(cliente);
+    }
 }

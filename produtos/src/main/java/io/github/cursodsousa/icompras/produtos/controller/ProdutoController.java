@@ -3,8 +3,10 @@ package io.github.cursodsousa.icompras.produtos.controller;
 import io.github.cursodsousa.icompras.produtos.model.Produto;
 import io.github.cursodsousa.icompras.produtos.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("produtos")
@@ -25,5 +27,17 @@ public class ProdutoController {
                 .obterPorCodigo(codigo)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build() );
+    }
+
+    @DeleteMapping("{codigo}")
+    public ResponseEntity<Void> deletar(@PathVariable("codigo") Long codigo){
+        var produto = service.obterPorCodigo(codigo)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Produto inexistente"
+                ));
+
+        service.deletar(produto);
+        return ResponseEntity.noContent().build();
     }
 }
